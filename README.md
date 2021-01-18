@@ -1,4 +1,4 @@
 Thanks for Downloading! 
-For setup, either Discord or Slack, you need to create a file in this directory called "url.txt".
-Once created, paste your discord webhook URL or slack token into that file. 
+For Discord integrations create a file in this directory called "discordurl.txt" with your webhook URL.
+For Slack integrations, create a file called "slacktoken.txt" with your slack token.
 Thats it!
