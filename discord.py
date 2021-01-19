@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import time
 from discord_webhook import DiscordWebhook
 
+
 class UND:
     def __init__(self):
         global url
@@ -23,7 +24,6 @@ class UND:
         page = requests.get("http://sof.aero.und.edu")
         self.soup = BeautifulSoup(page.content, "html.parser")
 
-
     def discordBot(self):
         FC1 = 0
         FR1 = 0
@@ -31,12 +31,12 @@ class UND:
         FR3 = 0
         now = time.gmtime()
         while 1 == 1:
-            if now[6] <= 5 and 3 <= now[3] <= 12:   # if the day of the week is not sunday, and its between 23 - 14 Zulu (GMT)      8am to 5 CST
+            if now[6] <= 5 and (now[3] >= 12 or now[3] <= 3):   # if the day of the week is not sunday, and its between 23 - 14 Zulu (GMT)      8am to 5 CST
                 und.scrape()
                 flightCategory = und.getFlightCategory()
                 flightRestrictions1, flightRestrictions2, flightRestrictions3 = und.getRestrictions()
                 if flightCategory == FC1 and flightRestrictions1 == FR1 and flightRestrictions2 == FR2 and flightRestrictions3 == FR3:
-                    time1 = (now[3] - 8)
+                    time1 = (now[3] - 6)
                     print("No Change", time1)  # print time it checked for debugging
                     time.sleep(300)
                 else:
@@ -57,13 +57,16 @@ class UND:
                         print("Posted")
                         time.sleep(300)
                     elif flightRestrictions3 != "Manager on Duty:":
-                        DiscordWebhook(url=url, content=('<@&796776150578757662> %s, %s, %s, %s' %(flightCategory, flightRestrictions1, flightRestrictions2, flightRestrictions3))).execute()
+                        DiscordWebhook(url=url, content=('<@&796776150578757662> %s, %s, %s, %s' % (flightCategory, flightRestrictions1, flightRestrictions2, flightRestrictions3))).execute()
                         print("Posted")
                         time.sleep(300)
             else:
                 print("Outside Time")
                 time.sleep(300)
+
+
 und = UND()
 und.discordBot()
+
 
 # time.struct_time(tm_year=2021, tm_mon=1, tm_mday=19, tm_hour=1, tm_min=15, tm_sec=14, tm_wday=1, tm_yday=19, tm_isdst=0)
