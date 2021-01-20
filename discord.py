@@ -71,7 +71,7 @@ class UND:
                         print("Posted")
                         time.sleep(300)
                     elif flightRestrictions3 != "Manager on Duty:":
-                        DiscordWebhook(url=url, content=('<@&796776150578757662> %s, %s, %s, %s, %s, %s' % (flightCategory, flightRestrictions1, flightRestrictions2, flightRestrictions3,flightRestrictions4,flightRestrictions5))).execute()
+                        DiscordWebhook(url=url, content=('<@&796776150578757662> %s, %s, %s, %s, %s, %s' % (flightCategory, flightRestrictions1, flightRestrictions2, flightRestrictions3, flightRestrictions4, flightRestrictions5))).execute()
                         print("Posted")
                         time.sleep(300)
             else:
