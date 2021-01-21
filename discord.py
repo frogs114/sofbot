@@ -60,7 +60,7 @@ class UND:
 
     def discordBot(self):
         FC1 = 0  # memory variables
-        now = time.gmtime()     # time variable for code execution
+        now = time.gmtime()  # time variable for code execution
         printlist = []
         FRlist = []
         und.scrape()  # gets info from page
@@ -68,15 +68,16 @@ class UND:
         for x in restrictionslist2:
             FRlist.append(0)
         while 1 == 1:
-            if 1 == 1:  # now[6] <= 5 and (now[3] >= 12 or now[3] <= 3):   if the day of the week is not sunday, and its between 23 - 14 Zulu (GMT) 8am to 5 CST
+            if now[6] <= 5 and (now[3] >= 12 or now[
+                3] <= 4):  # if the day of the week is not sunday, and its between 23 - 14 Zulu (GMT) 8am to 5 CST
                 und.scrape()  # gets info from page
                 flightCategory = und.getFlightCategory()  # sets html text to variables
                 restrictionslist2 = und.getRestrictions()
                 if flightCategory == FC1 and restrictionslist2 == FRlist:
                     time1 = (now[3] - 6)
                     print("No Change", time1)  # print time it checked for debugging
-                    time.sleep(5)
-                else:   # set memory variables
+                    time.sleep(300)
+                else:  # set memory variables
                     FC1 = flightCategory
                     FRlist = restrictionslist2
                     #   FC1, FRlist = und.setVariables(flightCategory, FRlist, restrictionslist2)
@@ -84,22 +85,23 @@ class UND:
                         DiscordWebhook(url=url,
                                        content=('<@&796776150578757662> %s' % flightCategory)).execute()
                         print('Posted, Closed')
-                        time.sleep(5)
+                        time.sleep(300)
                     else:
                         for attribute in restrictionslist2:
                             if attribute == "Manager on Duty:":
                                 string = ', '.join(printlist)
-                                DiscordWebhook(url=url, content=('<@&796776150578757662> %s, %s' % (flightCategory, string))).execute()
+                                DiscordWebhook(url=url, content=(
+                                            '<@&796776150578757662> %s, %s' % (flightCategory, string))).execute()
                                 print('Posted')
                                 printlist = []
-                                time.sleep(5)
+                                time.sleep(300)
                                 break
                             else:
                                 printlist.append(attribute)
 
             else:
                 print("Outside Time")
-                time.sleep(5)
+                time.sleep(300)
 
 
 und = UND()
