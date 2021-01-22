@@ -68,6 +68,7 @@ class UND:
         for x in restrictionslist2:
             FRlist.append(0)
         while 1 == 1:
+            now = time.gmtime()
             if now[6] <= 5 and (now[3] >= 12 or now[
                 3] <= 4):  # if the day of the week is not sunday, and its between 23 - 14 Zulu (GMT) 8am to 5 CST
                 und.scrape()  # gets info from page

@@ -16,12 +16,12 @@ class UND:
         return flightCategoryClass.get_text()
 
     def getRestrictions(self):  # Takes the appropriate html text and sets it to a variable
-        flightRestrictionsClass = self.soup.find(class_="auto-style4")
+        flightRestrictionsClass1 = self.soup.find(class_="auto-style4")
         flightRestrictionsClass2 = self.soup.find(class_="auto-style5")
         flightRestrictionsClass3 = self.soup.find(class_="auto-style6")
         flightRestrictionsClass4 = self.soup.find(class_="auto-style7")
         flightRestrictionsClass5 = self.soup.find(class_="auto-style8")
-        return flightRestrictionsClass.get_text(), flightRestrictionsClass2.get_text(), flightRestrictionsClass3.get_text(), flightRestrictionsClass4.get_text(), flightRestrictionsClass5.get_text()
+        return flightRestrictionsClass1.get_text(), flightRestrictionsClass2.get_text(), flightRestrictionsClass3.get_text(), flightRestrictionsClass4.get_text(), flightRestrictionsClass5.get_text()
 
     def scrape(self):
         page = requests.get("http://sof.aero.und.edu")
@@ -40,7 +40,7 @@ class UND:
                 und.scrape()
                 flightCategory = und.getFlightCategory()
                 flightRestrictions1, flightRestrictions2, flightRestrictions3, flightRestrictions4, flightRestrictions5 = und.getRestrictions()
-                if flightCategory == FC1 and flightRestrictions1 == FR1 and flightRestrictions2 == FR2 and flightRestrictions3 == FR3 and flightRestrictions3 == FR4 and flightRestrictions3 == FR5:
+                if flightCategory == FC1 and flightRestrictions1 == FR1 and flightRestrictions2 == FR2 and flightRestrictions3 == FR3 and flightRestrictions4 == FR4 and flightRestrictions5 == FR5:
                     time1 = (now[3] - 6)
                     print("No Change", time1)  # print time it checked for debugging
                     time.sleep(300)
@@ -83,4 +83,28 @@ class UND:
 # time.struct_time(tm_year=2021, tm_mon=1, tm_mday=19, tm_hour=1, tm_min=15, tm_sec=14, tm_wday=1, tm_yday=19, tm_isdst=0)
 
 und = UND()
-und.slackBot()
+#   und.slackBot()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
